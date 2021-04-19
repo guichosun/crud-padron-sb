@@ -13,7 +13,7 @@
 	<name>crud-padron-sb</name>
 	<description>Es un demo para simular operaciones CRUD en el padron</description>
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
