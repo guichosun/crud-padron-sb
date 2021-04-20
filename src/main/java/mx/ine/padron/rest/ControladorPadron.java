@@ -28,31 +28,31 @@ public class ControladorPadron {
 
 	@Autowired
 	private ServicioPadron applicationService;
-    
+
 	@GetMapping
 	@CrossOrigin
-    public ResponseEntity<List<Persona>> getAllPadron() {
+	public ResponseEntity<String> getAllPadron() {
 		// TODO: Traer a todas las personas
-        return new ResponseEntity<List<Persona>>(applicationService.recuperaTodasPersonas(), HttpStatus.OK);
-    }
-	
+		return new ResponseEntity<String>("Es una prueba", HttpStatus.OK);
+	}
+
 	@PostMapping
 	@CrossOrigin
 	public ResponseEntity<Persona> postPersonaAlPadron(@RequestBody Persona per) {
-		System.out.println("Entro al metodo get con el parametro: "+per.getNombreCompleto());
-		return new ResponseEntity<Persona>(applicationService.guarda(per),HttpStatus.OK);
+		System.out.println("Entro al metodo get con el parametro: " + per.getNombreCompleto());
+		return new ResponseEntity<Persona>(applicationService.guarda(per), HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/{id}")
 	@CrossOrigin
 	public ResponseEntity<Persona> getPersona(@PathVariable("id") int id) {
-		
+
 		// TODO: Traer a una sola persona por el id
-		
+
 		try {
-//			return new ResponseEntity<Message>(HttpStatus.OK);
-System.out.println("Entro al metodo get con el parametro: "+id);
-            return new ResponseEntity<Persona>(applicationService.findPersona(id), HttpStatus.OK);
+			// return new ResponseEntity<Message>(HttpStatus.OK);
+			System.out.println("Entro al metodo get con el parametro: " + id);
+			return new ResponseEntity<Persona>(applicationService.findPersona(id), HttpStatus.OK);
 		} catch (MessageNotFoundException exception) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Mensaje no encontrado");
 		}
